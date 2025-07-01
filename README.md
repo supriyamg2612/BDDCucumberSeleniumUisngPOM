@@ -20,11 +20,11 @@ An automation testing framework for UI validation of [Magento Demo Store](https:
 
 | Tool               | Version     |
 |--------------------|-------------|
-| Java               | 1.8         |
+| Java               | 17       |
 | Selenium WebDriver | 3.141.59    |
-| Cucumber           | 6.9.0       |
-| JUnit              | 4.13.1      |
+| Cucumber           | 7.14.0      |
+| JUnit              | 4.13.2      |
 | TestNG             | 6.14.3      |
 | Apache POI         | 4.1.2       |
-| WebDriverManager   | 4.2.2       |
+| WebDriverManager   | 5.7.0       |
 | ExtentReports      | 2.8.0       |
