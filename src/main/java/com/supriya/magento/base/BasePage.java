@@ -1,5 +1,11 @@
 package com.supriya.magento.base;
 
-public class BasePage {
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
+public class BasePage {
+	
+	protected static WebDriver driver;
+	
+	
 }
