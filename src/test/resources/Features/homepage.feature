@@ -18,4 +18,6 @@ Feature: Home Page Validation
     And the header should be visible
     And the footer should be visible
 
-  
+  Scenario: Verify Magento logo is visible on the home page
+    Given the user is on the home page
+    Then the Magento logo should be visible at the top-left corner

@@ -57,17 +57,15 @@ public class HomePageStepdefinition {
 	@Given("the user is on the home page")
 
 	public void the_user_is_on_the_home_page() throws Exception {
-
-	
-
+		driver.get(PropertyUtility.readProperty("url"));
+	      homepage.handleCookieConsent("consent");
 	}
 
-	  
-
-	@Then("the Magento logo should be visible at the top-left corner")
+	 @Then("the Magento logo should be visible at the top-left corner")
 
 	public void the_magento_logo_should_be_visible_at_the_top_left_corner() {
-
+		 Assert.assertTrue("❌ Magento logo is not visible on the Home Page. This may indicate that the page didn't load fully or elements are missing.", 
+                 homepage.isMagentoLogoVisible());
 	
 
 	}
