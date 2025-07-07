@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="11.4" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Home Page Validation" name="Verify home page loads successfully" time="11.14">
+<system-out><![CDATA[
+Given the user has opened the browser.......................................passed
+When the user navigates to Home Page........................................passed
+Then the page should load without errors....................................passed
+And the header should be visible............................................passed
+And the footer should be visible............................................passed
+]]></system-out>
+</testcase>
+</testsuite>
