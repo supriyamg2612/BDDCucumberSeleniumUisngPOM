@@ -8,11 +8,14 @@ import com.supriya.magento.pages.HomePage;
 import com.supriya.magento.pages.SignInPage;
 import com.supriya.magento.utilities.PropertyUtility;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class SignInPageSetpdefinition {
+	private String email;
+	private String password;
 	
 	WebDriver driver = Hooks.driver;
 	SignInPage signInPage = new SignInPage(driver);
@@ -95,7 +98,7 @@ public class SignInPageSetpdefinition {
 	    Assert.assertEquals("❌ Password field should mask characters, but it doesn't.", "password", fieldType);
 	}
 	
-	@Given("the user enters a valid {string} and {string}")
+	@When("the user enters a valid {string} and {string}")
 	public void the_user_enters_a_valid_and(String email, String password) {
 		signInPage.enterEmail(email);
 		signInPage.enterPassword(password);
@@ -116,11 +119,58 @@ public class SignInPageSetpdefinition {
 		        "❌ Welcome message incorrect. Expected username: '" + expectedUsername + "', but found: '" + actualWelcomeText + "'",
 		        matched
 		    );
+		    
+		    
 	}
-
-
 	
+	@When("user enters {string} and {string}")
+	public void user_enters_and(String email, String password) {		
+		 this.email = email;
+		    this.password = password;
+	        signInPage.logIntoApplication(this.email, this.password);
+		
+    }
+	
+
+	 @And("user clicks the {string} button")
+	    public void user_clicks_the_button(String buttonText) {
+		 
+	       signInPage.clickSignIn();
+	    }
+
+	 @Then("the user should see an error message {string}")
+	    public void the_user_should_see_an_error_message(String expectedMessage) {
+		 boolean displayed;
+
+		    switch (expectedMessage) {
+		        case "This is a required field.":
+		            displayed = this.email.isEmpty()
+		                ? signInPage.isErrorMessageDisplayedForEmptyEmail()
+		                : signInPage.isErrorMessageDisplayedForEmptyPassword();
+		            break;
+
+		        case "Please enter a valid email address (Ex: johndoe@domain.com).":
+		            displayed = signInPage.isErrorMessageDisplayedForInvalidEmail();
+		            break;
+
+		        case "The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.":
+		            displayed = signInPage.isErrorMessageDisplayedForInvalidCredentials();
+		            break;
+
+		        default:
+		            throw new IllegalArgumentException(
+		                "No mapping for expected message: " + expectedMessage
+		            );
+		    }
+
+		    Assert.assertTrue(
+		        "Expected to see error [" + expectedMessage + "] but it was not displayed.",
+		        displayed
+		    );
+	    }
 }
+	
+
 	
 
 

@@ -14,7 +14,7 @@ import io.cucumber.junit.CucumberOptions;
 					"html:target/HtmlReports"},
     monochrome = true,
     dryRun = false,
-    tags = "@hello"
+    tags = "@HI"
     )
 
 

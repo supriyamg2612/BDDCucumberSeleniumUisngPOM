@@ -31,14 +31,29 @@ Feature: Login Page Validation
     Then the password input should mask the characters
 
   # Functional Positive Scenario
-  @hello
-Scenario Outline: Successful login with valid credentials
-    Given the user enters a valid "<email>" and "<password>"
+  Scenario Outline: Successful login with valid credentials
+    When the user enters a valid "<email>" and "<password>"
     And the user clicks the "Sign In" button
-  Then the user should see the welcome message "<username>"
-  
-  Examples:
-    
-     | email                        | password        | username        |
-    | celinaredden123@gmail.com   | Celinaredden123 | Celina Redden   |
-    | jones20@gmail.com           | Jones@12345     | Vendy Jones     |
+    Then the user should see the welcome message "<username>"
+
+    Examples: 
+      | email                     | password        | username      |
+      | celinaredden123@gmail.com | Celinaredden123 | Celina Redden |
+      | jones20@gmail.com         | Jones@12345     | Vendy Jones   |
+
+  # Functional Negative Scenarios
+  @HI
+  Scenario Outline: Display appropriate error message for invalid login credentials
+    When user enters "<email>" and "<password>"
+    And user clicks the "Sign In" button
+    Then the user should see an error message "<errorMessage>"
+
+    Examples: 
+      | email            | password    | errorMessage                                                                                                |
+      |                  |             | This is a required field.                                                                                   |
+      |                  | Password123 | This is a required field.                                                                                   |
+      | user@example.com |             | This is a required field.                                                                                   |
+      | user@example.com | wrongpass   | The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later. |
+      | invalidemail     | Password123 | Please enter a valid email address (Ex: johndoe@domain.com).                                                |
+      | user@.com        | Password123 | Please enter a valid email address (Ex: johndoe@domain.com).                                                |
+      | user@example.com |         123 | The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later. |
