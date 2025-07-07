@@ -70,33 +70,27 @@ public class HomePageStepdefinition {
 
 	}
 
-	  
-
-	@Given("the user is on any page")
+	 @Given("the user is on any page")
 
 	public void the_user_is_on_any_page() {
+		driver.get("https://magento.softwaretestingboard.com/catalogsearch/result/?q=shirt"); // example different page
+		 homepage.handleCookieConsent("consent");
+}
 
-
-	}
-
-	  
-
-	@When("the user clicks the Magento logo")
+	  @When("the user clicks the Magento logo")
 
 	public void the_user_clicks_the_magento_logo() {
+		  homepage.clickMagentoLogo();
+}
 
-
-	  
-
-	}
-
-	  
-
-	@Then("the user should be redirected to the home page")
+	 @Then("the user should be redirected to the home page")
 
 	public void the_user_should_be_redirected_to_the_home_page() throws Exception {
 
-	
+		 String currentUrl = driver.getCurrentUrl();
+		 String homeUrl =PropertyUtility.readProperty("url");
+		 Assert.assertTrue(
+				    "❌ Current URL does not contain the expected home UR", currentUrl.contains(homeUrl));
 
 	}
 

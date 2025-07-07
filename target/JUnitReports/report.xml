@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="15.398" tests="2" skipped="0" failures="0" errors="0">
-<testcase classname="Home Page Validation" name="Verify home page loads successfully" time="9.285">
+<testsuite name="Cucumber" time="24.929" tests="3" skipped="0" failures="0" errors="0">
+<testcase classname="Home Page Validation" name="Verify home page loads successfully" time="8.243">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 When the user navigates to Home Page........................................passed
@@ -9,11 +9,19 @@ And the header should be visible............................................pass
 And the footer should be visible............................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Home Page Validation" name="Verify Magento logo is visible on the home page" time="5.778">
+<testcase classname="Home Page Validation" name="Verify Magento logo is visible on the home page" time="5.652">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 Given the user is on the home page..........................................passed
 Then the Magento logo should be visible at the top-left corner..............passed
+]]></system-out>
+</testcase>
+<testcase classname="Home Page Validation" name="Verify clicking Magento logo redirects to home page" time="10.693">
+<system-out><![CDATA[
+Given the user has opened the browser.......................................passed
+Given the user is on any page...............................................passed
+When the user clicks the Magento logo.......................................passed
+Then the user should be redirected to the home page.........................passed
 ]]></system-out>
 </testcase>
 </testsuite>

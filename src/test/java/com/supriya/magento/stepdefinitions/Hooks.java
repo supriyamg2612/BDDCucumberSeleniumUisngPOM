@@ -40,6 +40,6 @@ public class Hooks {
             }
         }
 
-       DriverUtility.quitDriver();
+     DriverUtility.quitDriver();
     }
 }
