@@ -89,7 +89,7 @@ public class HomePageStepdefinition {
 
 		 String currentUrl = driver.getCurrentUrl();
 		 String homeUrl =PropertyUtility.readProperty("url");
-		 Assert.assertTrue("❌ Current URL does not contain the expected home UR", currentUrl.contains(homeUrl));
+		 Assert.assertTrue("❌ Current URL does not contain the expected home URL", currentUrl.contains(homeUrl));
 				    
 
 	}
@@ -112,22 +112,29 @@ public class HomePageStepdefinition {
 
 	}
 
-	  
-
-	@When("the user clicks the {string} link")
+	  @When("the user clicks the {string} link")
 
 	public void the_user_clicks_the_link(String linkText) {
-
-	
-
+		  switch (linkText.toLowerCase()) {
+		  case "sign in":
+			  homepage.clickSignInLink();
+			  break;
+		  case "create an account":
+			  homepage.clickCreateAccountLink();
+			  break;
+		  default:
+		  Assert.fail("Link text not recognized: " + linkText);
+		  
+		  }
 	}
-
-	  
 
 	@Then("the user should be redirected to the login page")
 
 	public void the_user_should_be_redirected_to_the_login_page() {
-
+		Assert.assertTrue("❌ The current URL does not indicate the user is on the login page. Expected URL to contain 'customer/account/login' but was: " + driver.getCurrentUrl(),
+			    driver.getCurrentUrl().contains("customer/account/login"));
+			    
+			
 	  
 }
 	  
@@ -135,7 +142,7 @@ public class HomePageStepdefinition {
 	@Then("the user should be redirected to the registration page")
 
 	public void the_user_should_be_redirected_to_the_registration_page() {
-
+		Assert.assertTrue("❌ The current URL does not indicate the user is on the login page. Expected URL to contain 'customer/account/create' but was: " + driver.getCurrentUrl(),driver.getCurrentUrl().contains("customer/account/create"));
 	  }
 	  
 
