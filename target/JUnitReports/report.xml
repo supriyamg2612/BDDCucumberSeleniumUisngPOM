@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="70.559" tests="6" skipped="0" failures="0" errors="0">
-<testcase classname="Home Page Validation" name="Verify home page loads successfully" time="10.094">
+<testsuite name="Cucumber" time="0.697" tests="7" skipped="0" failures="1" errors="0">
+<testcase classname="Home Page Validation" name="Verify home page loads successfully" time="0.057">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 When the user navigates to Home Page........................................passed
@@ -9,14 +9,14 @@ And the header should be visible............................................pass
 And the footer should be visible............................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Home Page Validation" name="Verify Magento logo is visible on the home page" time="6.115">
+<testcase classname="Home Page Validation" name="Verify Magento logo is visible on the home page" time="0.005">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 Given the user is on the home page..........................................passed
 Then the Magento logo should be visible at the top-left corner..............passed
 ]]></system-out>
 </testcase>
-<testcase classname="Home Page Validation" name="Verify clicking Magento logo redirects to home page" time="16.466">
+<testcase classname="Home Page Validation" name="Verify clicking Magento logo redirects to home page" time="0.018">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 Given the user is on any page...............................................passed
@@ -24,7 +24,7 @@ When the user clicks the Magento logo.......................................pass
 Then the user should be redirected to the home page.........................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Home Page Validation" name="Verify 'Sign In' and 'Create an Account' links are visible in the header" time="6.865">
+<testcase classname="Home Page Validation" name="Verify 'Sign In' and 'Create an Account' links are visible in the header" time="0.009">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 Given the user is on the home page..........................................passed
@@ -32,7 +32,7 @@ Then the header should display a "Sign In" link.............................pass
 And the header should display a "Create an Account" link....................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Home Page Validation" name="Verify clicking 'Sign In' link redirects to the login page" time="16.94">
+<testcase classname="Home Page Validation" name="Verify clicking 'Sign In' link redirects to the login page" time="0.013">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 Given the user is on the home page..........................................passed
@@ -40,12 +40,24 @@ When the user clicks the "Sign In" link.....................................pass
 Then the user should be redirected to the login page........................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Home Page Validation" name="Verify that clicking the 'Create an Account' link redirects to the registration page." time="13.692">
+<testcase classname="Home Page Validation" name="Verify that clicking the 'Create an Account' link redirects to the registration page." time="0.01">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 Given the user is on the home page..........................................passed
 When the user clicks the "Create an Account" link...........................passed
 Then the user should be redirected to the registration page.................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login Page Validation" name="Verify login page fields and buttons are visible" time="0.018">
+<failure/>
+<system-out><![CDATA[
+Given the user has opened the browser.......................................passed
+And the user navigates to the login page....................................passed
+Then the email input field should be visible................................passed
+And the password input field should be visible..............................passed
+And the "Sign In" button should be visible..................................passed
+And the "Forgot Password" link should be visible............................undefined
+And the "Create an Account" link should be visible..........................skipped
 ]]></system-out>
 </testcase>
 </testsuite>

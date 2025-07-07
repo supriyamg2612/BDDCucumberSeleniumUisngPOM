@@ -2,6 +2,7 @@ package com.supriya.magento.stepdefinitions;
 
 import java.util.List;
 import static org.junit.Assert.assertTrue;
+import java.util.logging.Level;
 
 
 import org.junit.Assert;
@@ -144,49 +145,4 @@ public class HomePageStepdefinition {
 	public void the_user_should_be_redirected_to_the_registration_page() {
 		Assert.assertTrue("❌ The current URL does not indicate the user is on the login page. Expected URL to contain 'customer/account/create' but was: " + driver.getCurrentUrl(),driver.getCurrentUrl().contains("customer/account/create"));
 	  }
-	  
-
-	@Then("the footer should be visible with all expected links and social icons")
-
-	public void the_footer_should_be_visible_with_all_expected_links_and_social_icons() {
-
-
-	 
-	}
-
-	@Given("the user opens browser console")
-
-	public void the_user_opens_browser_console() {
-
-
-	}
-
-	@When("the user navigates to the home page")
-
-	public void the_user_navigates_to_the_home_page() throws Exception {
-
-	
-
-	}
-
-	  
-
-	@Then("no errors should be displayed in the console")
-
-	public void no_errors_should_be_displayed_in_the_console() {
-
-
-	}
-
-	  
-
-	  
-
-	  
-
-	
-
-
-	
-
 }

@@ -41,3 +41,4 @@ Feature: Home Page Validation
     Given the user is on the home page
     When the user clicks the "Create an Account" link
     Then the user should be redirected to the registration page
+    

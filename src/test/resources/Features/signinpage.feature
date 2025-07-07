@@ -1,0 +1,22 @@
+# Project: Magento E-Commerce Website Testing
+# Application: Magento Software Testing Board
+# Module: Login Page
+# Feature: Login Page Validation
+# Author: [Your Name]
+# Description: Verify that the login page loads correctly, UI elements are visible, and login functionality works as expected.
+Feature: Login Page Validation
+  In order to securely access my account
+  As a user
+  I want to verify that the login page UI elements are visible and login functionality behaves correctly with valid and invalid inputs.
+
+  Background: 
+    Given the user has opened the browser
+    And the user navigates to the login page
+
+  # UI Scenarios
+  Scenario: Verify login page fields and buttons are visible
+    Then the email input field should be visible
+    And the password input field should be visible
+    And the "Sign In" button should be visible
+    And the "Forgot Your Password?" link should be visible
+    And the "Create an Account" link should be visible
