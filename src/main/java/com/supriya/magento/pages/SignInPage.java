@@ -4,7 +4,6 @@
 	import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.support.FindBy;
 	import org.openqa.selenium.support.PageFactory;
-	import org.openqa.selenium.support.ui.ExpectedConditions;
 	import org.openqa.selenium.support.ui.WebDriverWait;
 	
 	public class SignInPage {
@@ -95,6 +94,14 @@
 	
 		    public void clickSignIn() {
 		        signInButton.click();
+		    }
+		    
+		    
+		    public DashBoardPage validLogin(String email, String password) {
+		        enterEmail(email);
+		        enterPassword(password);
+		        clickSignIn();
+		        return new DashBoardPage(driver); // Navigate to DashboardPage after successful login
 		    }
 		    public void logIntoApplication(String email, String password) {
 		        
