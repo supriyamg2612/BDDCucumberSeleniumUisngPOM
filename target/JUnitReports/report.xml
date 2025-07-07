@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="24.929" tests="3" skipped="0" failures="0" errors="0">
-<testcase classname="Home Page Validation" name="Verify home page loads successfully" time="8.243">
+<testsuite name="Cucumber" time="30.995" tests="4" skipped="0" failures="0" errors="0">
+<testcase classname="Home Page Validation" name="Verify home page loads successfully" time="9.087">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 When the user navigates to Home Page........................................passed
@@ -9,19 +9,27 @@ And the header should be visible............................................pass
 And the footer should be visible............................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Home Page Validation" name="Verify Magento logo is visible on the home page" time="5.652">
+<testcase classname="Home Page Validation" name="Verify Magento logo is visible on the home page" time="5.864">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 Given the user is on the home page..........................................passed
 Then the Magento logo should be visible at the top-left corner..............passed
 ]]></system-out>
 </testcase>
-<testcase classname="Home Page Validation" name="Verify clicking Magento logo redirects to home page" time="10.693">
+<testcase classname="Home Page Validation" name="Verify clicking Magento logo redirects to home page" time="9.332">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 Given the user is on any page...............................................passed
 When the user clicks the Magento logo.......................................passed
 Then the user should be redirected to the home page.........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Home Page Validation" name="Verify 'Sign In' and 'Create an Account' links are visible in the header" time="6.278">
+<system-out><![CDATA[
+Given the user has opened the browser.......................................passed
+Given the user is on the home page..........................................passed
+Then the header should display a "Sign In" link.............................passed
+And the header should display a "Create an Account" link....................passed
 ]]></system-out>
 </testcase>
 </testsuite>

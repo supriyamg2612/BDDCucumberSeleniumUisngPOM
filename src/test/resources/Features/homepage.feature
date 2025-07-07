@@ -21,8 +21,13 @@ Feature: Home Page Validation
   Scenario: Verify Magento logo is visible on the home page
     Given the user is on the home page
     Then the Magento logo should be visible at the top-left corner
-    
-    Scenario: Verify clicking Magento logo redirects to home page
+
+  Scenario: Verify clicking Magento logo redirects to home page
     Given the user is on any page
     When the user clicks the Magento logo
     Then the user should be redirected to the home page
+
+  Scenario: Verify 'Sign In' and 'Create an Account' links are visible in the header
+    Given the user is on the home page
+    Then the header should display a "Sign In" link
+    And the header should display a "Create an Account" link

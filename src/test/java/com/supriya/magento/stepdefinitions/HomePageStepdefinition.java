@@ -89,18 +89,26 @@ public class HomePageStepdefinition {
 
 		 String currentUrl = driver.getCurrentUrl();
 		 String homeUrl =PropertyUtility.readProperty("url");
-		 Assert.assertTrue(
-				    "❌ Current URL does not contain the expected home UR", currentUrl.contains(homeUrl));
+		 Assert.assertTrue("❌ Current URL does not contain the expected home UR", currentUrl.contains(homeUrl));
+				    
 
 	}
-
-	  
-
+	 
+	
 	@Then("the header should display a {string} link")
 
 	public void the_header_should_display_a_link(String linkText) {
 
-	
+		switch (linkText.toLowerCase()) {
+		case "sign in":
+			Assert.assertTrue(homepage.isSignInLinkVisible());
+			break;
+		case "create an account":
+			Assert.assertTrue(homepage.isCreateAccountLinkVisible());
+			break;
+		default:
+			Assert.fail("Link text not recognized: " + linkText);
+		}
 
 	}
 

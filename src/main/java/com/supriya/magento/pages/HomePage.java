@@ -53,10 +53,7 @@ public class HomePage {
 	        return footer.isDisplayed();
 	    }
 
-	    
-	  
-
-	    public boolean isMagentoLogoVisible() {
+	     public boolean isMagentoLogoVisible() {
 	        return magentoLogo.isDisplayed();
 	    }
 
