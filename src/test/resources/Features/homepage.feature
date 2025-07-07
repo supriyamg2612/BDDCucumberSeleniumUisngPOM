@@ -4,6 +4,7 @@
 # Feature: Home Page Validation
 # Author: [Supriya Ghuge]
 # Description: Verify that the Magento home page loads correctly with all essential UI components and navigation links.
+@HomePage
 Feature: Home Page Validation
   In order to ensure the Magento e-commerce site functions correctly
   As a user

@@ -9,6 +9,7 @@ import com.supriya.magento.utilities.PropertyUtility;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class SignInPageSetpdefinition {
 	
@@ -61,6 +62,37 @@ public class SignInPageSetpdefinition {
 
 	    Assert.assertTrue("❌ '" + linkText + "' link is not visible on the login page.", isVisible);
 	}
+	
+	
+	@Then("the email input field should have placeholder {string}")
+	public void the_email_input_field_should_have_placeholder(String expectedPlaceholder) {
+		String actualPlaceholder = signInPage.getEmailPlaceholder();
+		Assert.assertEquals(
+			    "❌ Email placeholder mismatch. Expected: '" + expectedPlaceholder + "', but found: '" + actualPlaceholder + "'",
+			    expectedPlaceholder,
+			    actualPlaceholder
+			);	}
+
+	@Then("the password input field should have placeholder {string}")
+	public void the_password_input_field_should_have_placeholder(String expectedPlaceholder) {
+		 String actualPlaceholder = signInPage.getPasswordPlaceholder();
+		 Assert.assertEquals(
+		            "❌ Password placeholder mismatch. Expected: '" + expectedPlaceholder + "', but found: '" + actualPlaceholder + "'",
+		            expectedPlaceholder,
+		            actualPlaceholder
+		        );  
+	}
+	
+	@When("the user enters {string} into the password field")
+	public void the_user_enters_into_the_password_field(String password) {
+	    signInPage.enterPassword(password); 
+	}
+	@Then("the password input should mask the characters")
+	public void the_password_input_should_mask_the_characters() {
+	    String fieldType = signInPage.getPasswordFieldType();
+	    Assert.assertEquals("❌ Password field should mask characters, but it doesn't.", "password", fieldType);
+	}
+	
 	}
 
 	

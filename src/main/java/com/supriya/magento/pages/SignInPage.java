@@ -63,6 +63,18 @@ public class SignInPage {
 	        return createAccountLink.isDisplayed();
 	    }
 	    
+	    public String getEmailPlaceholder() {
+	        return emailField.getAttribute("placeholder");
+	    }
+
+	    public String getPasswordPlaceholder() {
+	        return passwordField.getAttribute("placeholder");
+	    }
+	    
+	    public String getPasswordFieldType() {
+	        return passwordField.getAttribute("type");
+	    }
+	    
 	 public void enterEmail(String email) {
 	        emailField.clear();
 	        emailField.sendKeys(email);

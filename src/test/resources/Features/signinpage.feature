@@ -4,6 +4,7 @@
 # Feature: Login Page Validation
 # Author: [Your Name]
 # Description: Verify that the login page loads correctly, UI elements are visible, and login functionality works as expected.
+@LoginPage
 Feature: Login Page Validation
   In order to securely access my account
   As a user
@@ -20,3 +21,11 @@ Feature: Login Page Validation
     And the "Sign In" button should be visible
     And the "Forgot Your Password?" link should be visible
     And the "Create an Account" link should be visible
+
+  Scenario: Verify placeholders for email and password fields
+    Then the email input field should have placeholder "Email"
+    And the password input field should have placeholder "Password"
+
+  Scenario: Verify password field masks input characters
+    When the user enters "Password123" into the password field
+    Then the password input should mask the characters
