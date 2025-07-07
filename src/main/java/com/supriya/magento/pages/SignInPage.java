@@ -39,6 +39,9 @@ public class SignInPage {
 	 @FindBy(css = ".message-error.error.message")
 	    private WebElement errorMessage;
 	 
+	 @FindBy(css = "div.dashboard")  // Adjust selector based on actual HTML
+	 private WebElement myAccountDashboard;
+	 
 	 
 	 
 	 public boolean isEmailFieldVisible() {
@@ -89,7 +92,13 @@ public class SignInPage {
 	        signInButton.click();
 	    }
 	    
-	   
+	    public boolean isMyAccountDashboardVisible() {
+	        try {
+	            return myAccountDashboard.isDisplayed();
+	        } catch (Exception e) {
+	            return false;
+	        }
+	    }
 	   
 
 	    public void clickCreateAccount() {
@@ -111,6 +120,8 @@ public class SignInPage {
 	        return "";
 	    }
 
+	    
+	    
 	    
 
 }

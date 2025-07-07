@@ -3,6 +3,7 @@ package com.supriya.magento.stepdefinitions;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
+import com.supriya.magento.pages.DashBoardPage;
 import com.supriya.magento.pages.HomePage;
 import com.supriya.magento.pages.SignInPage;
 import com.supriya.magento.utilities.PropertyUtility;
@@ -16,6 +17,7 @@ public class SignInPageSetpdefinition {
 	WebDriver driver = Hooks.driver;
 	SignInPage signInPage = new SignInPage(driver);
 	 HomePage homepage =new HomePage(driver);
+	 DashBoardPage dashboard = new DashBoardPage(driver);
 	
 	
 	@Given("the user navigates to the login page")
@@ -93,8 +95,32 @@ public class SignInPageSetpdefinition {
 	    Assert.assertEquals("❌ Password field should mask characters, but it doesn't.", "password", fieldType);
 	}
 	
+	@Given("the user enters a valid {string} and {string}")
+	public void the_user_enters_a_valid_and(String email, String password) {
+		signInPage.enterEmail(email);
+		signInPage.enterPassword(password);
 	}
 
+	@Given("the user clicks the {string} button")
+	public void the_user_clicks_the_button(String string) {
+		signInPage.clickSignIn();
+	}
+
+	@Then("the user should see the welcome message {string}")
+	public void the_user_should_see_the_welcome_message(String expectedUsername) {
+		 String actualWelcomeText = dashboard.getWelcomeMessage(); // e.g., "Welcome, Vendy Jones!"
+
+		    boolean matched = actualWelcomeText.contains(expectedUsername);
+
+		    Assert.assertTrue(
+		        "❌ Welcome message incorrect. Expected username: '" + expectedUsername + "', but found: '" + actualWelcomeText + "'",
+		        matched
+		    );
+	}
+
+
+	
+}
 	
 
 

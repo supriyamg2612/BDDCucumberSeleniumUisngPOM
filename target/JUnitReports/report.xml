@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="32.907" tests="3" skipped="0" failures="1" errors="0">
-<testcase classname="Login Page Validation" name="Verify login page fields and buttons are visible" time="12.725">
+<testsuite name="Cucumber" time="33.951" tests="2" skipped="0" failures="0" errors="0">
+<testcase classname="Login Page Validation" name="Successful login with valid credentials - Example #1.1" time="18.443">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 And the user navigates to the login page....................................passed
-Then the email input field should be visible................................passed
-And the password input field should be visible..............................passed
-And the "Sign In" button should be visible..................................passed
-And the "Forgot Your Password?" link should be visible......................passed
-And the "Create an Account" link should be visible..........................passed
+Given the user enters a valid "celinaredden123@gmail.com" and "Celinaredden123".passed
+And the user clicks the "Sign In" button....................................passed
+Then the user should see the welcome message "Celina Redden"................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Login Page Validation" name="Verify placeholders for email and password fields" time="10.538">
-<failure type="org.junit.ComparisonFailure" message="❌ Email placeholder mismatch. Expected: 'Email', but found: '' expected:&lt;[Email]&gt; but was:&lt;[]&gt;">
-<![CDATA[org.junit.ComparisonFailure: ❌ Email placeholder mismatch. Expected: 'Email', but found: '' expected:<[Email]> but was:<[]>
-	at org.junit.Assert.assertEquals(Assert.java:117)
-	at com.supriya.magento.stepdefinitions.SignInPageSetpdefinition.the_email_input_field_should_have_placeholder(SignInPageSetpdefinition.java:70)
-	at ✽.the email input field should have placeholder "Email"(file:///Users/supriya/eclipse-workspace/AdvancedSelenium-java/magento-authentication-bdd-pom/src/test/resources/Features/signinpage.feature:26)
-]]>
-</failure>
+<testcase classname="Login Page Validation" name="Successful login with valid credentials - Example #1.2" time="15.093">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 And the user navigates to the login page....................................passed
-Then the email input field should have placeholder "Email"..................failed
-And the password input field should have placeholder "Password".............skipped
-]]></system-out>
-</testcase>
-<testcase classname="Login Page Validation" name="Verify password field masks input characters" time="9.277">
-<system-out><![CDATA[
-Given the user has opened the browser.......................................passed
-And the user navigates to the login page....................................passed
-When the user enters "Password123" into the password field..................passed
-Then the password input should mask the characters..........................passed
+Given the user enters a valid "jones20@gmail.com" and "Jones@12345".........passed
+And the user clicks the "Sign In" button....................................passed
+Then the user should see the welcome message "Vendy Jones"..................passed
 ]]></system-out>
 </testcase>
 </testsuite>
