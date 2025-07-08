@@ -14,9 +14,8 @@ import io.cucumber.junit.CucumberOptions;
 					"html:target/HtmlReports"},
     monochrome = true,
     dryRun = false,
-    tags = "@HI"
-    )
-
+    tags = "@Test"
+)
 
 
 public class TestRunner {

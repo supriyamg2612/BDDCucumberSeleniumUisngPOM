@@ -247,14 +247,27 @@ public class SignInPageSetpdefinition {
 				    "Welcome message is incorrect. Expected username: " + expectedMessage + " but found: " + actualWelcomeText,
 				    matched
 				);
+ }
+	 
+	 @Then("the tab order should navigate in logical sequence: Email → Password → Sign In")
+	 public void verify_tab_order_sequence() {
+	     // Focus on the email field
+	     WebElement email = signInPage.getEmailField();
+	     email.click();
 
-		 
-		 
-		 
-				    
-			
-		 
+	     // Press TAB: should move to password field
+	     email.sendKeys(Keys.TAB);
+	     WebElement activeElement1 = driver.switchTo().activeElement();
+	     Assert.assertEquals("Password field not focused after tab from email", 
+	                         signInPage.getPasswordField(), activeElement1);
+
+	     // Press TAB again: should move to sign-in button
+	     activeElement1.sendKeys(Keys.TAB);
+	     WebElement activeElement2 = driver.switchTo().activeElement();
+	     Assert.assertEquals("Sign-in button not focused after tab from password", 
+	                         signInPage.getSignInButton(), activeElement2);
 	 }
+
 
 	 
 	 }

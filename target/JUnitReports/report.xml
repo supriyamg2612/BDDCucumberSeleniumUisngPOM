@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="48.945" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Login Page Validation" name="Pressing Enter key submits login form" time="48.562">
+<testsuite name="Cucumber" time="16.167" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Create Account Page Validation" name="Verify personal information and sign-in information fields are visible and editable" time="15.794">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
-And the user navigates to the login page....................................passed
-Given the user enters a valid email "celinaredden123@gmail.com".............passed
-And the user enters a valid password "Celinaredden123"......................passed
-When the user presses the Enter key while focused on the password field.....passed
-Then the user should see welcome message "Celina Redden"....................passed
+And the user navigates to the Create Account page...........................passed
+Then the "First Name" field should be visible and editable..................passed
+And the "Last Name" field should be visible and editable....................passed
+And the "Email" field should be visible and editable........................passed
+And the "Password" field should be visible and editable.....................passed
+And the "Confirm Password" field should be visible and editable.............passed
+And "Create an Account" button should be visible............................passed
 ]]></system-out>
 </testcase>
 </testsuite>

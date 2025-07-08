@@ -2,7 +2,7 @@
 # Application: Magento Software Testing Board
 # Module: Login Page
 # Feature: Login Page Validation
-# Author: [Your Name]
+# Author: [Supriya]
 # Description: Verify that the login page loads correctly, UI elements are visible, and login functionality works as expected.
 #@LoginPage
 Feature: Login Page Validation
@@ -66,9 +66,11 @@ Feature: Login Page Validation
     When the user clicks the "Create an Account" link on sign in page
     Then the user should be redirected to the page with title "Create New Customer Account"
 
-@HI
   Scenario: Pressing Enter key submits login form
     Given the user enters a valid email "celinaredden123@gmail.com"
     And the user enters a valid password "Celinaredden123"
     When the user presses the Enter key while focused on the password field
-     Then the user should see welcome message "Celina Redden"
+    Then the user should see welcome message "Celina Redden"
+@HI
+  Scenario: Verify tab order of fields and buttons
+    Then the tab order should navigate in logical sequence: Email → Password → Sign In
