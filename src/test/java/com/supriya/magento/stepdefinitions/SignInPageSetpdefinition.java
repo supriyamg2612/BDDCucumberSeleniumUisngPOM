@@ -1,10 +1,12 @@
 package com.supriya.magento.stepdefinitions;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -186,32 +188,7 @@ public class SignInPageSetpdefinition {
 	 @When("the user clicks the {string} link on the Sign In page")
 	 public void the_user_clicks_the_link_on_signin_page(String linkText) throws InterruptedException {
 		 if (linkText.equalsIgnoreCase("Forgot Your Password?")) {
-
-		        // Try to dismiss ad before clicking
-		        try {
-		            Actions actions = new Actions(driver);
-		            actions.sendKeys(Keys.ESCAPE).perform();
-		            Thread.sleep(1000);
-
-		            WebElement body = driver.findElement(By.tagName("body"));
-		            for (int i = 0; i < 3; i++) {
-		                body.click();
-		                Thread.sleep(500);
-		            }
-		            System.out.println("Attempted to close overlay ad.");
-		        } catch (Exception e) {
-		            System.out.println("No overlay ad to close.");
-		        }
-
-		        // Wait for the ad iframe to disappear if still present
-		        WebDriverWait wait = new WebDriverWait(driver, 15);
-		        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("aswift_1")));
-
-		        // Now click the forgot password link safely
-		        WebElement forgotPasswordLink = driver.findElement(By.linkText("Forgot Your Password?"));
-		        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", forgotPasswordLink);
-		        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", forgotPasswordLink);
-
+		        signInPage.clickForgotPasswordLink();
 		    } else {
 		        Assert.fail("⚠ Unsupported link text: " + linkText);
 		    }
@@ -225,7 +202,32 @@ public class SignInPageSetpdefinition {
 		    
 		    Assert.assertEquals("❌ User was not redirected to the password recovery page.", expectedUrl, actualUrl);
 		}
-	   }
+	 
+	 @When("the user clicks the {string} link on sign in page")
+	    public void the_user_clicks_the_link_on_sign_in_page(String linkText) {
+		 if (linkText.equalsIgnoreCase("Create an Account")) {
+		        signInPage.clickCreateAccount();
+		    } else {
+		        Assert.fail("⚠ Unsupported link text: " + linkText);
+		    }
+		}
+	 @Then("the user should be redirected to the page with title {string}")
+	    public void the_user_should_be_redirected_to_the_page_with_title(String expectedTitle) {
+		 WebDriverWait wait = new WebDriverWait(driver, 10);
+		    wait.until(ExpectedConditions.titleContains(expectedTitle));
+
+		    String actualTitle = driver.getTitle();
+		    System.out.println("Actual page title: " + actualTitle);
+
+		    assertTrue(actualTitle.contains(expectedTitle), 
+		        "Page title does not contain expected text. Actual: " + actualTitle);
+	    }
+	 }
+	 
+	 
+	 
+
+	 
 	
 
 	

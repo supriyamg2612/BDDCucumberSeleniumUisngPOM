@@ -1,9 +1,12 @@
 	package com.supriya.magento.pages;
 	
-	import org.openqa.selenium.JavascriptExecutor;
+	import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
-	import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 	import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -131,13 +134,53 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 		    
 	
 		    public void clickCreateAccount() {
-		        createAccountLink.click();
+		    	try {
+		            Actions actions = new Actions(driver);
+		            actions.sendKeys(Keys.ESCAPE).perform();
+		            Thread.sleep(1000);
+
+		            WebElement body = driver.findElement(By.tagName("body"));
+		            for (int i = 0; i < 3; i++) {
+		                body.click();
+		                Thread.sleep(500);
+		            }
+		            System.out.println("Attempted to close overlay ad.");
+		        } catch (Exception e) {
+		            System.out.println("No overlay ad to close.");
+		        }
+		    	
+
+		        WebDriverWait wait = new WebDriverWait(driver, 15);
+		        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("aswift_1")));
+
+		        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", createAccountLink);
+		        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", createAccountLink);
 		    }
+		    
 		    public PasswordRecoveryPage clickForgotPasswordLink() {
-		    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", forgotPasswordLink);
+		    	try {
+		            Actions actions = new Actions(driver);
+		            actions.sendKeys(Keys.ESCAPE).perform();
+		            Thread.sleep(1000);
+
+		            WebElement body = driver.findElement(By.tagName("body"));
+		            for (int i = 0; i < 3; i++) {
+		                body.click();
+		                Thread.sleep(500);
+		            }
+		            System.out.println("Attempted to close overlay ad.");
+		        } catch (Exception e) {
+		            System.out.println("No overlay ad to close.");
+		        }
+
+		        WebDriverWait wait = new WebDriverWait(driver, 15);
+		        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("aswift_1")));
+
 		        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink));
-		        forgotPasswordLink.click();
-				return new PasswordRecoveryPage(driver);
+		        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", forgotPasswordLink);
+		        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", forgotPasswordLink);
+
+		        return new PasswordRecoveryPage(driver);
 		    }
 		    
 	}

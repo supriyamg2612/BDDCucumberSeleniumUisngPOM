@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="20.6" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Login Page Validation" name="Verify 'Forgot Password' link redirects to password recovery page" time="20.199">
+<testsuite name="Cucumber" time="27.545" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Login Page Validation" name="Verify 'Forgot Password' link redirects to password recovery page" time="27.134">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 And the user navigates to the login page....................................passed
