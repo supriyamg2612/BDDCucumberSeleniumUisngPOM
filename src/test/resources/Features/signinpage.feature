@@ -42,7 +42,7 @@ Feature: Login Page Validation
       | jones20@gmail.com         | Jones@12345     | Vendy Jones   |
 
   # Functional Negative Scenarios
-  @HI
+  
   Scenario Outline: Display appropriate error message for invalid login credentials
     When user enters "<email>" and "<password>"
     And user clicks the "Sign In" button
@@ -57,3 +57,10 @@ Feature: Login Page Validation
       | invalidemail     | Password123 | Please enter a valid email address (Ex: johndoe@domain.com).                                                |
       | user@.com        | Password123 | Please enter a valid email address (Ex: johndoe@domain.com).                                                |
       | user@example.com |         123 | The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later. |
+      
+      
+      # Navigation
+      @HI
+  Scenario: Verify 'Forgot Password' link redirects to password recovery page
+    When the user clicks the "Forgot Your Password?" link on the Sign In page
+ Then the user should be redirected to the password recovery page

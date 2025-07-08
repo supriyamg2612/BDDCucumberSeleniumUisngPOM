@@ -1,10 +1,12 @@
 	package com.supriya.magento.pages;
 	
-	import org.openqa.selenium.WebDriver;
+	import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.support.FindBy;
 	import org.openqa.selenium.support.PageFactory;
-	import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 	
 	public class SignInPage {
 		
@@ -131,11 +133,19 @@
 		    public void clickCreateAccount() {
 		        createAccountLink.click();
 		    }
+		    public PasswordRecoveryPage clickForgotPasswordLink() {
+		    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", forgotPasswordLink);
+		        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink));
+		        forgotPasswordLink.click();
+				return new PasswordRecoveryPage(driver);
+		    }
 		    
-		    
-	
-		    
-		    
-		    
-	
 	}
+		    
+		    
+	
+		    
+		    
+		    
+	
+	

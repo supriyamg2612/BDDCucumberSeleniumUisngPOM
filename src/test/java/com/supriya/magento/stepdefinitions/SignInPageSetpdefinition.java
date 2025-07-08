@@ -1,10 +1,19 @@
 package com.supriya.magento.stepdefinitions;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.supriya.magento.pages.DashBoardPage;
 import com.supriya.magento.pages.HomePage;
+import com.supriya.magento.pages.PasswordRecoveryPage;
 import com.supriya.magento.pages.SignInPage;
 import com.supriya.magento.utilities.PropertyUtility;
 
@@ -16,11 +25,14 @@ import io.cucumber.java.en.When;
 public class SignInPageSetpdefinition {
 	private String email;
 	private String password;
+	WebDriver wait;
 	
 	WebDriver driver = Hooks.driver;
 	SignInPage signInPage = new SignInPage(driver);
 	 HomePage homepage =new HomePage(driver);
 	 DashBoardPage dashboard = new DashBoardPage(driver);
+	    PasswordRecoveryPage passwordRecoveryPage;
+
 	
 	
 	@Given("the user navigates to the login page")
@@ -168,7 +180,52 @@ public class SignInPageSetpdefinition {
 		        displayed
 		    );
 	    }
-}
+	 
+	 
+	 
+	 @When("the user clicks the {string} link on the Sign In page")
+	 public void the_user_clicks_the_link_on_signin_page(String linkText) throws InterruptedException {
+		 if (linkText.equalsIgnoreCase("Forgot Your Password?")) {
+
+		        // Try to dismiss ad before clicking
+		        try {
+		            Actions actions = new Actions(driver);
+		            actions.sendKeys(Keys.ESCAPE).perform();
+		            Thread.sleep(1000);
+
+		            WebElement body = driver.findElement(By.tagName("body"));
+		            for (int i = 0; i < 3; i++) {
+		                body.click();
+		                Thread.sleep(500);
+		            }
+		            System.out.println("Attempted to close overlay ad.");
+		        } catch (Exception e) {
+		            System.out.println("No overlay ad to close.");
+		        }
+
+		        // Wait for the ad iframe to disappear if still present
+		        WebDriverWait wait = new WebDriverWait(driver, 15);
+		        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("aswift_1")));
+
+		        // Now click the forgot password link safely
+		        WebElement forgotPasswordLink = driver.findElement(By.linkText("Forgot Your Password?"));
+		        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", forgotPasswordLink);
+		        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", forgotPasswordLink);
+
+		    } else {
+		        Assert.fail("⚠ Unsupported link text: " + linkText);
+		    }
+		}
+	 
+	 
+	 @Then("the user should be redirected to the password recovery page")
+	    public void the_user_should_be_redirected_to_the_password_recovery_page() {
+		String actualUrl = driver.getCurrentUrl();
+		    String expectedUrl = "https://magento.softwaretestingboard.com/customer/account/forgotpassword/";
+		    
+		    Assert.assertEquals("❌ User was not redirected to the password recovery page.", expectedUrl, actualUrl);
+		}
+	   }
 	
 
 	
