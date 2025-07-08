@@ -222,6 +222,41 @@ public class SignInPageSetpdefinition {
 		    assertTrue(actualTitle.contains(expectedTitle), 
 		        "Page title does not contain expected text. Actual: " + actualTitle);
 	    }
+	 @Given("the user enters a valid email {string}")
+	 public void enter_valid_email(String email) {
+	     signInPage.enterEmail(email);
+	 }
+	 
+	 @Given("the user enters a valid password {string}")
+	 public void enter_valid_password(String password) {
+	     signInPage.enterPassword(password);
+	 }
+	 
+	 @When("the user presses the Enter key while focused on the password field")
+	 public void press_enter_key_on_password_field() {
+	     // Assuming you have a reference to the password field WebElement in your page object
+	     WebElement passwordField = signInPage.getPasswordField(); // add getter if needed
+	     passwordField.sendKeys(Keys.ENTER);
+	 }
+	 
+	 @Then("the user should see welcome message {string}")
+	 public void the_user_should_see_welcome_message(String expectedMessage) {
+		 String actualWelcomeText = dashboard.getWelcomeMessage();
+		 boolean matched = actualWelcomeText.contains(expectedMessage);
+		 Assert.assertTrue(
+				    "Welcome message is incorrect. Expected username: " + expectedMessage + " but found: " + actualWelcomeText,
+				    matched
+				);
+
+		 
+		 
+		 
+				    
+			
+		 
+	 }
+
+	 
 	 }
 	 
 	 

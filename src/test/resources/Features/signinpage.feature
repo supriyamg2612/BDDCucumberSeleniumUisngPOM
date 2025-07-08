@@ -58,11 +58,17 @@ Feature: Login Page Validation
       | user@example.com |         123 | The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later. |
 
   # Navigation
-  @HI
   Scenario: Verify 'Forgot Password' link redirects to password recovery page
     When the user clicks the "Forgot Your Password?" link on the Sign In page
     Then the user should be redirected to the password recovery page
 
   Scenario: Verify 'Create an Account' link redirects to registration page
-   When the user clicks the "Create an Account" link on sign in page
-Then the user should be redirected to the page with title "Create New Customer Account"
+    When the user clicks the "Create an Account" link on sign in page
+    Then the user should be redirected to the page with title "Create New Customer Account"
+
+@HI
+  Scenario: Pressing Enter key submits login form
+    Given the user enters a valid email "celinaredden123@gmail.com"
+    And the user enters a valid password "Celinaredden123"
+    When the user presses the Enter key while focused on the password field
+     Then the user should see welcome message "Celina Redden"

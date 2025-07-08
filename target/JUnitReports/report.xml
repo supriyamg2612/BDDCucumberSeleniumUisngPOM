@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="27.545" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Login Page Validation" name="Verify 'Forgot Password' link redirects to password recovery page" time="27.134">
+<testsuite name="Cucumber" time="48.945" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Login Page Validation" name="Pressing Enter key submits login form" time="48.562">
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 And the user navigates to the login page....................................passed
-When the user clicks the "Forgot Your Password?" link on the Sign In page...passed
-Then the user should be redirected to the password recovery page............passed
+Given the user enters a valid email "celinaredden123@gmail.com".............passed
+And the user enters a valid password "Celinaredden123"......................passed
+When the user presses the Enter key while focused on the password field.....passed
+Then the user should see welcome message "Celina Redden"....................passed
 ]]></system-out>
 </testcase>
 </testsuite>

@@ -183,6 +183,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 		        return new PasswordRecoveryPage(driver);
 		    }
 		    
+		    public WebElement getPasswordField() {
+		        return passwordField;
+		    }
 	}
 		    
 		    
