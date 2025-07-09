@@ -123,6 +123,34 @@ public class CreateAccountPageStepdefinition {
 	     Assert.assertTrue("❌ '" + buttonName + "' button is not visible.", isVisible);
 	     System.out.println("✅ '" + buttonName + "' button is visible.");
 	 }
+	 
+	 @Then("the {string} field should have placeholder {string}")
+	 public void the_field_should_have_placeholder(String fieldName, String expectedPlaceholderName) {
+		 String actualPlaceholderName = null;
+		 
+		 // NOTE: This test is intentionally written to verify placeholder text,
+		    // even though the current application version may not include it.
+		    // Purpose: Practice test and to highlight a missing UI element (bug).
+		 switch (fieldName) {
+		 case "First Name":
+			 actualPlaceholderName = createAccountPage.getFirstNamePlaceholder();
+			 break;
+		 case "Last Name":
+			 actualPlaceholderName = createAccountPage.getLastNamePlaceholder();
+		 case "Email":
+			 actualPlaceholderName = createAccountPage.getEmailPlaceholder();
+	            break;
+	        case "Password":
+	        	actualPlaceholderName = createAccountPage.getPasswordPlaceholder();
+	            break;
+	        case "Confirm Password":
+	        	actualPlaceholderName = createAccountPage.getConfirmPasswordPlaceholder();
+	            break;
+	        default:
+	        	 Assert.fail("❌ Unknown field name: " + fieldName);
+		 }
+		 Assert.assertEquals("❌ Placeholder text does not match for " + fieldName, expectedPlaceholderName, actualPlaceholderName);
+	 }
 	     
 	 }
 

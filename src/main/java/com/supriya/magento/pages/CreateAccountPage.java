@@ -91,6 +91,27 @@ public class CreateAccountPage {
 	    }
 		
 		
+		public String getFirstNamePlaceholder() {
+		    return firstNameField.getAttribute("placeholder");
+		}
+
+		public String getLastNamePlaceholder() {
+		    return lastNameField.getAttribute("placeholder");
+		}
+
+		public String getEmailPlaceholder() {
+		    return emailField.getAttribute("placeholder");
+		}
+
+		public String getPasswordPlaceholder() {
+		    return passwordField.getAttribute("placeholder");
+		}
+
+		public String getConfirmPasswordPlaceholder() {
+		    return confirmPasswordField.getAttribute("placeholder");
+		}
+		
+		
 		
 		
 		

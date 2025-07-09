@@ -24,7 +24,7 @@ Feature: Create Account Page Validation
     Then the "Personal Information" section should be visible
     And the "Sign-in Information" section should be visible
 
-  @Test
+ 
   Scenario: Verify personal information and sign-in information fields are visible and editable
     Then the "First Name" field should be visible and editable
     And the "Last Name" field should be visible and editable
@@ -32,3 +32,11 @@ Feature: Create Account Page Validation
     And the "Password" field should be visible and editable
     And the "Confirm Password" field should be visible and editable
     And "Create an Account" button should be visible
+
+       @Test
+      Scenario: Verify placeholders for registration fields
+    Then the "First Name" field should have placeholder "First Name"
+    And the "Last Name" field should have placeholder "Last Name"
+    And the "Email" field should have placeholder "Email"
+    And the "Password" field should have placeholder "Password"
+    And the "Confirm Password" field should have placeholder "Confirm Password"

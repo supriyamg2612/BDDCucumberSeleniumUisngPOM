@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="16.167" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Create Account Page Validation" name="Verify personal information and sign-in information fields are visible and editable" time="15.794">
+<testsuite name="Cucumber" time="15.158" tests="1" skipped="0" failures="1" errors="0">
+<testcase classname="Create Account Page Validation" name="Verify placeholders for registration fields" time="14.743">
+<failure type="org.junit.ComparisonFailure" message="❌ Placeholder text does not match for First Name expected:&lt;[First Name]&gt; but was:&lt;[]&gt;">
+<![CDATA[org.junit.ComparisonFailure: ❌ Placeholder text does not match for First Name expected:<[First Name]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at com.supriya.magento.stepdefinitions.CreateAccountPageStepdefinition.the_field_should_have_placeholder(CreateAccountPageStepdefinition.java:148)
+	at ✽.the "First Name" field should have placeholder "First Name"(file:///Users/supriya/eclipse-workspace/AdvancedSelenium-java/magento-authentication-bdd-pom/src/test/resources/Features/createaccount.feature:38)
+]]>
+</failure>
 <system-out><![CDATA[
 Given the user has opened the browser.......................................passed
 And the user navigates to the Create Account page...........................passed
-Then the "First Name" field should be visible and editable..................passed
-And the "Last Name" field should be visible and editable....................passed
-And the "Email" field should be visible and editable........................passed
-And the "Password" field should be visible and editable.....................passed
-And the "Confirm Password" field should be visible and editable.............passed
-And "Create an Account" button should be visible............................passed
+Then the "First Name" field should have placeholder "First Name"............failed
+And the "Last Name" field should have placeholder "Last Name"...............skipped
+And the "Email" field should have placeholder "Email".......................skipped
+And the "Password" field should have placeholder "Password".................skipped
+And the "Confirm Password" field should have placeholder "Confirm Password".skipped
 ]]></system-out>
 </testcase>
 </testsuite>
